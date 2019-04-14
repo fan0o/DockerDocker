@@ -21,7 +21,7 @@ jobs:
       - run:
           name: Deploy Docker redemption
           command: chmod +x ./deploy/deploy_master.sh && ./deploy/deploy_master.sh
- prod:
+  prod:
     machine: true
     steps:
       - checkout
