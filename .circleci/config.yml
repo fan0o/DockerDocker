@@ -1,0 +1,32 @@
+# Python CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-python/ for more details
+#
+version: 2
+jobs:
+  master:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Prepare Environment Variables
+          command: |
+            cp .env.local.master .env
+      - run:
+          name: Building Docker redemption Image
+          command:  docker build --rm=false -t fan0o/DockerDocker .;
+      - run:
+          name: Register Dockerize redemption
+          command: chmod +x ./deploy/registry_master.sh && ./deploy/registry_master.sh
+      - run:
+          name: Deploy Docker redemption
+          command: chmod +x ./deploy/deploy_master.sh && ./deploy/deploy_master.sh
+          
+workflows:
+  version: 2
+  pipeline:
+    jobs:
+      - master:
+          filters:
+            branches:
+              only: master
