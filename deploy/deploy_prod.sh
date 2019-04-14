@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 echo "Creating Logs"
-ssh $DEPLOY_USER@$DEPLOY_HOST_MASTER 'sudo docker logs dockerdocker > /root/logs-archive/dockerdocker-prod_`date +%Y%m%d-%H%M%S`.log'
+ssh $DEPLOY_USER@$DEPLOY_HOST_MASTER 'sudo docker logs dockerdockerprod > /root/logs-archive/dockerdocker-prod_`date +%Y%m%d-%H%M%S`.log'
 
 echo "stopping running live application"
-ssh $DEPLOY_USER@$DEPLOY_HOST_MASTER 'sudo docker stop dockerdocker:prod'
-ssh $DEPLOY_USER@$DEPLOY_HOST_MASTER 'sudo docker rm dockerdocker:prod'
+ssh $DEPLOY_USER@$DEPLOY_HOST_MASTER 'sudo docker stop dockerdockerprod'
+ssh $DEPLOY_USER@$DEPLOY_HOST_MASTER 'sudo docker rm dockerdockerprod'
 
 ssh $DEPLOY_USER@$DEPLOY_HOST_MASTER 'sudo docker rmi fan0o/dockerdocker:prod'
 
