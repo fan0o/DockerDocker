@@ -14,7 +14,7 @@ jobs:
             cp .env.local.master .env
       - run:
           name: Building Docker redemption Image
-          command:  docker build --rm=false -t fan0o/DockerDocker .;
+          command:  docker build --rm=false -t fan0o/dockerdocker .;
       - run:
           name: Register Dockerize redemption
           command: chmod +x ./deploy/registry_master.sh && ./deploy/registry_master.sh
