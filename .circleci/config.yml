@@ -21,7 +21,23 @@ jobs:
       - run:
           name: Deploy Docker redemption
           command: chmod +x ./deploy/deploy_master.sh && ./deploy/deploy_master.sh
-
+ wmaster:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Prepare Environment Variables
+          command: |
+            cp .env.local.prod .env
+      - run:
+          name: Building Docker redemption Image
+          command:  docker build --rm=false -t fan0o/dockerdocker .;
+      - run:
+          name: Register Dockerize redemption
+          command: chmod +x ./deploy/registry_prod.sh && ./deploy/registry_prod.sh
+      - run:
+          name: Deploy Docker redemption
+          command: chmod +x ./deploy/deploy_prod.sh && ./deploy/deploy_prod.sh
  
           
 workflows:
