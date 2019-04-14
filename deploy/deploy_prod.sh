@@ -15,7 +15,7 @@ echo "pulling latest version of the code"
 ssh $DEPLOY_USER@$DEPLOY_HOST_MASTER 'sudo docker pull fan0o/dockerdocker:prod'
 
 echo "starting the new live version"
-ssh $DEPLOY_USER@$DEPLOY_HOST_MASTER 'docker  run -d -p 4000:80 --restart=always --name dockerdocker fan0o/dockerdocker:prod'
+ssh $DEPLOY_USER@$DEPLOY_HOST_MASTER 'docker  run -d -p 8000:80 --restart=always --name dockerdockerprod fan0o/dockerdocker:prod'
 
 echo "success!"
 
